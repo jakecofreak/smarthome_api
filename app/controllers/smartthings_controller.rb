@@ -1,4 +1,4 @@
-require 'rest-client'
+require 'rest_client'
 
 class SmartthingsController < ApplicationController
   def test

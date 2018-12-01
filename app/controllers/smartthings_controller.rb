@@ -8,5 +8,7 @@ class SmartthingsController < ApplicationController
       sleep 300
       RestClient.put('http://172.30.0.106/api/Bo8C0mvSaLK98DbrOkNqdu4c80779GvOsrk2rpuT/lights/10/state', {on: false})
     end
+
+    render :json => {message: 'This is a return message'}
   end
 end

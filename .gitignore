@@ -20,4 +20,4 @@
 /config/master.key
 
 # Ignore anything from RubyMine
-**/.idea
+.idea/

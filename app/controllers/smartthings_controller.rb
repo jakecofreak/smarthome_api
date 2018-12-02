@@ -3,9 +3,9 @@ require 'rest_client'
 class SmartthingsController < ApplicationController
   def test
     # Thread.new do
-      json = '{"on": false}'
+    #   json = '{"on": false}'
       response = RestClient.put('http://172.30.0.106/api/Bo8C0mvSaLK98DbrOkNqdu4c80779GvOsrk2rpuT/groups/4/action',
-                                json, {:content_type => :json})
+                                {on: false}.to_json, {:content_type => :json})
 
       # RestClient.put('http://172.30.0.106/api/Bo8C0mvSaLK98DbrOkNqdu4c80779GvOsrk2rpuT/groups/2/action', {on: false})
       # RestClient.put('http://172.30.0.106/api/Bo8C0mvSaLK98DbrOkNqdu4c80779GvOsrk2rpuT/groups/3/action', {on: false})

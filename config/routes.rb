@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get '/test', to: 'smartthings#test'
+  get '/leaving', to: 'smartthings#leaving'
 end

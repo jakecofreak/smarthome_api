@@ -13,6 +13,6 @@ class SmartthingsController < ApplicationController
     # end
 
     # render :json => {message: 'This is a return message'}
-    render response
+    render :json => response
   end
 end

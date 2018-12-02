@@ -1,5 +1,3 @@
-# require 'rest_client'
-
 class SmartthingsController < ApplicationController
   def test
     Thread.new do

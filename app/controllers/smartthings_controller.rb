@@ -16,4 +16,9 @@ class SmartthingsController < ApplicationController
       RestClient.put(base_url + '/lights/10/state', off_payload, json_header)
     end
   end
+
+  # SmartThings lifecycle integration
+  def lifecycle
+
+  end
 end

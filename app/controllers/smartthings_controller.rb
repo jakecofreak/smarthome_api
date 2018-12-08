@@ -19,6 +19,14 @@ class SmartthingsController < ApplicationController
 
   # SmartThings lifecycle integration
   def lifecycle
+  end
+  def garage_on
+    RestClient.put('http://98.220.134.109:8086/api/Bo8C0mvSaLK98DbrOkNqdu4c80779GvOsrk2rpuT/lights/10/state',
+                   { on: true, bri: 254 }.to_json, { :content_type => :json })
+  end
 
+  def garage_off
+    RestClient.put('http://98.220.134.109:8086/api/Bo8C0mvSaLK98DbrOkNqdu4c80779GvOsrk2rpuT/lights/10/state',
+                   { on: false }.to_json, { :content_type => :json })
   end
 end

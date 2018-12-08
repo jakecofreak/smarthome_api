@@ -19,6 +19,7 @@ class SmartthingsController < ApplicationController
 
   # SmartThings lifecycle integration
   def lifecycle
+    render :json => { message: 'this is a message'}
   end
   def garage_on
     RestClient.put('http://98.220.134.109:8086/api/Bo8C0mvSaLK98DbrOkNqdu4c80779GvOsrk2rpuT/lights/10/state',

@@ -24,6 +24,10 @@ class SmartthingsController < ApplicationController
   # SmartThings lifecycle integration
   def lifecycle
     lifecycle_request = ActiveSupport::JSON.decode(request.body.read).deep_symbolize_keys!
+
+    # log request payload to local server
+    local_logger lifecycle_request, "lifecycle"
+
     case lifecycle_request[:lifecycle]
       when "PING"
         # respond with pingData object for PINGs
@@ -82,6 +86,25 @@ class SmartthingsController < ApplicationController
     end
   end
 
+  def new_subscription
+    headers = { :content_type => :json, :Authorization => "Bearer 7084122c-b5c4-4aae-9034-a5214b775d02" }
+    request_payload = {
+        sourceType: "CAPABILITY",
+        capability: {
+            locationId: "0a87dfbe-5fff-4752-9a94-11b2ec648c81",
+            capability: "*",
+            attribute: "*",
+            value: "*",
+            stateChangeOnly: true,
+            subscriptionName: "everything_subscription"
+        }
+    }.to_json
+    st_response = RestClient.post('https://api.smartthings.com/installedapps/54d13532-3270-4986-8921-8ddb141ab13b/subscriptions',
+                                  request_payload,
+                                  headers)
+    local_logger st_response, "new subscription"
+  end
+
   def garage_on
     RestClient.put('http://98.220.134.109:8086/api/Bo8C0mvSaLK98DbrOkNqdu4c80779GvOsrk2rpuT/lights/10/state',
                    { on: true, bri: 254 }.to_json, { :content_type => :json })
@@ -90,5 +113,9 @@ class SmartthingsController < ApplicationController
   def garage_off
     RestClient.put('http://98.220.134.109:8086/api/Bo8C0mvSaLK98DbrOkNqdu4c80779GvOsrk2rpuT/lights/10/state',
                    { on: false }.to_json, { :content_type => :json })
+  end
+
+  def local_logger(json_hash, endpoint)
+    RestClient.post('http://98.220.134.109:8090/logs', json_hash.merge(railsEndpoint: endpoint).to_json, { :content_type => :json })
   end
 end

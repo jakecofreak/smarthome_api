@@ -102,7 +102,11 @@ class SmartthingsController < ApplicationController
     st_response = RestClient.post('https://api.smartthings.com/installedapps/54d13532-3270-4986-8921-8ddb141ab13b/subscriptions',
                                   request_payload,
                                   headers)
-    local_logger st_response, "new subscription"
+
+    # st_response = RestClient.get('http://172.30.0.250/test')
+
+    local_logger JSON.parse(st_response), "new subscription"
+    render :json => { message: "subscription success?" }
   end
 
   def garage_on
@@ -116,6 +120,16 @@ class SmartthingsController < ApplicationController
   end
 
   def local_logger(json_hash, endpoint)
-    RestClient.post('http://98.220.134.109:8090/logs', json_hash.merge(railsEndpoint: endpoint).to_json, { :content_type => :json })
+    logs = hash_maker json_hash
+    logs.merge!(railsEndpoint: endpoint)
+    RestClient.post('98.220.134.109:8090/logs', logs.to_json, { :content_type => :json })
+  end
+
+  def hash_maker(pseudo_hash)
+    output = Hash.new
+    pseudo_hash.each do |key, value|
+      output[key] = value.is_a?(Hash) ? hash_maker(value) : value
+    end
+    output
   end
 end

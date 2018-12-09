@@ -23,13 +23,37 @@ class SmartthingsController < ApplicationController
 
   # SmartThings lifecycle integration
   def lifecycle
-    response = ActiveSupport::JSON.decode(request.body.read)
+    lifecycle_request = ActiveSupport::JSON.decode(request.body.read)
+    case lifecycle_request["lifecycle"]
+      when "PING"
+        # respond with pingData object for PINGs
+        render :json => { pingData: lifecycle_request["pingData"] }
 
-    if response["lifecycle"] == "PING"
-      render :json => { pingData: response["pingData"] }
+      when "CONFIGURATION"
+        # respond with appropriate config data for CONFIGURATION
+        case lifecycle_request["configurationData"]["phase"]
+          when "INITIALIZE"
+            response_payload = {
+                configurationData: {
+                    initialize: {
+                        name: "Smart Home Brain",
+                        description: "Ruby app for managing all event data from SmartThings",
+                        id: "smarthome-brain-api",
+                        permissions: %w(r:installedapps:* w:installedapps:* l:devices r:devices:* w:devices:* x:devices:* i:deviceprofiles r:schedules w:schedules r:locations:*),
+                        firstPageId: 1
+                    }
+                }
+            }
+
+          render :json => response_payload
+          else
+            render :json => { message: "DID NOT FIND INITIALIZE"}
+        end
+      else
+        render :json => { message: "DID NOT FIND CONFIGURATION" }
     end
-    # render :json => { message: 'this is a message'}
   end
+
   def garage_on
     RestClient.put('http://98.220.134.109:8086/api/Bo8C0mvSaLK98DbrOkNqdu4c80779GvOsrk2rpuT/lights/10/state',
                    { on: true, bri: 254 }.to_json, { :content_type => :json })

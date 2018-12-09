@@ -6,6 +6,11 @@ class SmartthingsController < ApplicationController
     render :json => { message: 'This is the root of the application.' }
   end
 
+  def logs
+    log_request = ActiveSupport::JSON.decode(request.body.read).deep_symbolize_keys!
+    logger.info log_request
+  end
+
   def leaving
     base_url = 'http://172.30.0.106/api/Bo8C0mvSaLK98DbrOkNqdu4c80779GvOsrk2rpuT'
     off_payload = {on: false}.to_json

@@ -23,15 +23,15 @@ class SmartthingsController < ApplicationController
 
   # SmartThings lifecycle integration
   def lifecycle
-    lifecycle_request = ActiveSupport::JSON.decode(request.body.read)
-    case lifecycle_request["lifecycle"]
+    lifecycle_request = ActiveSupport::JSON.decode(request.body.read).deep_symbolize_keys!
+    case lifecycle_request[:lifecycle]
       when "PING"
         # respond with pingData object for PINGs
-        render :json => { pingData: lifecycle_request["pingData"] }
+        render :json => { pingData: lifecycle_request[:pingData] }
 
       when "CONFIGURATION"
         # respond with appropriate config data for CONFIGURATION
-        case lifecycle_request["configurationData"]["phase"]
+        case lifecycle_request[:configurationData][:phase]
           when "INITIALIZE"
             response_payload = {
                 configurationData: {
@@ -40,14 +40,42 @@ class SmartthingsController < ApplicationController
                         description: "Ruby app for managing all event data from SmartThings",
                         id: "smarthome-brain-api",
                         permissions: %w(r:installedapps:* w:installedapps:* l:devices r:devices:* w:devices:* x:devices:* i:deviceprofiles r:schedules w:schedules r:locations:*),
-                        firstPageId: 1
+                        firstPageId: "1"
                     }
                 }
             }
-
           render :json => response_payload
+
+          when "PAGE"
+            response_payload = {
+                configurationData: {
+                    page: {
+                        pageId: "1",
+                        name: "No configuration needed.",
+                        nextPageId: nil,
+                        previousPageId: nil,
+                        complete: true,
+                        sections: [
+                            {
+                                name: "Configuration",
+                                settings: [
+                                    {
+                                        id: "paragraphInformation",
+                                        name: "You're all set!",
+                                        description: "No configuration needed.",
+                                        type: "PARAGRAPH",
+                                        defaultValue: "There is no further configuration needed for this app."
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+          render :json => response_payload
+
           else
-            render :json => { message: "DID NOT FIND INITIALIZE"}
+            render :json => { message: "DID NOT FIND INITIALIZE OR PAGE", configPhase: lifecycle_request[:configurationData][:phase] }
         end
       else
         render :json => { message: "DID NOT FIND CONFIGURATION" }

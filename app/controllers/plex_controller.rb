@@ -35,7 +35,8 @@ class PlexController < ApplicationController
         },
         'crazynickmarshall': {},
         'jordannicmarshall': {
-            home: '98.223.107.114'
+            home: '98.223.107.114',
+            bryan_uncle_house: '71.194.71.251'
         },
         'paulfanfoot': {}
     }

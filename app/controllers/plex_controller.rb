@@ -38,7 +38,9 @@ class PlexController < ApplicationController
             home: '98.223.107.114',
             bryan_uncle_house: '71.194.71.251'
         },
-        'paulfanfoot': {}
+        'paulfanfoot': {
+            home: '75.27.16.133'
+        }
     }
 
     # matches a user's IP to a location

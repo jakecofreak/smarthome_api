@@ -25,7 +25,8 @@ class PlexController < ApplicationController
             home: '68.45.34.102'
         },
         'Rileyhopesuthy': {
-            home: '71.46.94.22'
+            unsure_1: '71.46.94.22',
+            home: '73.102.207.11'
         },
         'thejudeallen': {
             home: '184.175.156.31'

@@ -22,11 +22,13 @@ class PlexController < ApplicationController
             home: '98.220.134.109'
         },
         'dtmob48': {
-            home: '68.45.34.102'
+            home: '68.45.34.102',
+            janae_parents: '68.44.183.73'
         },
         'Rileyhopesuthy': {
             unsure_1: '71.46.94.22',
-            home: '73.102.207.11'
+            home: '73.102.207.11',
+            london: '86.150.174.161'
         },
         'thejudeallen': {
             home: '184.175.156.31'

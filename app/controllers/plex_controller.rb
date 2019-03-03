@@ -78,7 +78,7 @@ class PlexController < ApplicationController
     ifttt_url = 'https://maker.ifttt.com/trigger/plex/with/key/bd8RYS8JENBzOlYhHOzxMv'
     notification = ActiveSupport::JSON.decode(request.body.read).deep_symbolize_keys!
     user_id = notification[:user].partition('@').first.to_sym
-    user_name = @@data[user_id] ? @@data[user_id].friendly_name : "Unknown user #{user_id}"
+    user_name = @@data[user_id] ? @@data[user_id][:friendly_name] : "Unknown user #{user_id}"
 
     # exit early if stream was finished
     if notification[:action] == 'finished'
@@ -88,13 +88,13 @@ class PlexController < ApplicationController
     end
     
     # do nothing if watching notification was sent within last 60s
-    if @@data[user_id].currently_watching
+    if @@data[user_id][:currently_watching]
       return
     end
 
     # matches a user's IP to a location
     location = ''
-    @@data[user_id].approved_ips.each do |key, value|
+    @@data[user_id][:approved_ips].each do |key, value|
       if notification[:ipAddress] == value
         location = key.to_s
       end
@@ -102,13 +102,13 @@ class PlexController < ApplicationController
 
     # build and send IFTTT notification
     Thread.new do
-      @@data[user_id].currently_watching = true
+      @@data[user_id][:currently_watching] = true
       payload[:value1] = "#{user_name} is watching #{notification[:title]}"
       payload[:value2] = location.empty? ? ". Unknown IP #{notification[:ipAddress]} detected!" : " from #{location}."
       payload[:value3] = " Stream count: #{notification[:activeStreams]}"
       RestClient.post(ifttt_url, payload.to_json, headers)
       sleep 60
-      @@data[user_id].currently_watching = false
+      @@data[user_id][:currently_watching] = false
     end
   end
 

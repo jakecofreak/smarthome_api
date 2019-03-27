@@ -21,3 +21,6 @@
 
 # Ignore anything from RubyMine
 .idea/
+
+# Ignore macOS crap
+.DS_Store

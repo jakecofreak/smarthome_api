@@ -23,7 +23,8 @@ class PlexController < ApplicationController
           approved_ips: {
               unsure_1: '71.46.94.22',
               home: '73.102.207.11',
-              london: '86.150.174.161'
+              london: '86.150.174.161',
+              babysitter_house: '47.227.183.69'
           },
           friendly_name: 'Riley Hope',
           currently_watching: false

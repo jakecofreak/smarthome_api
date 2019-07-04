@@ -77,7 +77,7 @@ class PlexController < ApplicationController
           friendly_name: 'Hill Clark',
           currently_watching: false
       },
-      'mbchyno@gmail.com': {
+      'mbchyno': {
           approved_ips: {
 
           },
@@ -93,7 +93,16 @@ class PlexController < ApplicationController
     ifttt_url = 'https://maker.ifttt.com/trigger/plex/with/key/bd8RYS8JENBzOlYhHOzxMv'
     notification = ActiveSupport::JSON.decode(request.body.read).deep_symbolize_keys!
     user_id = notification[:user].partition('@').first.to_sym
-    user_name = @@data[user_id] ? @@data[user_id][:friendly_name] : "Unknown user #{user_id}"
+    if @@data[user_id].nil?
+      @@data[user_id] = {
+          approved_ips: {
+              unknown_location: notification[:ipAddress]
+          },
+          friendly_name: "Unknown user #{user_id}",
+          currently_watching: false
+      }
+    end
+    user_name = @@data[user_id][:friendly_name]
 
     # exit early if stream was finished
     if notification[:action] == 'finished'
@@ -123,7 +132,11 @@ class PlexController < ApplicationController
       payload[:value3] = " Stream count: #{notification[:activeStreams]}"
       RestClient.post(ifttt_url, payload.to_json, headers)
       sleep 60
-      @@data[user_id][:currently_watching] = false
+      if @@data[user_id][:friendly_name].include? "Unknown"
+        @@data.delete user_id
+      else
+        @@data[user_id][:currently_watching] = false
+      end
     end
   end
 

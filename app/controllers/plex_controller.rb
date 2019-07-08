@@ -83,6 +83,13 @@ class PlexController < ApplicationController
           },
           friendly_name: 'Marie',
           currently_watching: false
+      },
+      'Ddietz1': {
+          approved_ips: {
+              home: '172.30.0.101'
+          },
+          friendly_name: 'David',
+          currently_watching: false
       }
   }
 

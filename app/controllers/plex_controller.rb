@@ -11,12 +11,67 @@ class PlexController < ApplicationController
           friendly_name: 'Aimee/Andrew',
           currently_watching: false
       },
+
+      'ccmovies7': {
+          approved_ips: {},
+          friendly_name: 'Crystal',
+          currently_watching: false
+      },
+      'crazynickmarshall': {
+          approved_ips: {},
+          friendly_name: 'Nicholas',
+          currently_watching: false
+      },
+      'Ddietz1': {
+          approved_ips: {
+              home: '67.20.136.88',
+              corys: '173.95.12.131'
+          },
+          friendly_name: 'David',
+          currently_watching: false
+      },
       'dtmob48': {
           approved_ips: {
               home: '68.45.34.102',
               janae_parents: '68.44.183.73'
           },
           friendly_name: 'Janae/Dustin',
+          currently_watching: false
+      },
+      'gdietz57': {
+          approved_ips: {
+              home: '67.20.136.88'
+          },
+          friendly_name: 'Gammy',
+          currently_watching: false
+      },
+      'hillc913': {
+          approved_ips: {
+              home: '73.45.234.137'
+          },
+          friendly_name: 'Hill Clark',
+          currently_watching: false
+      },
+      'jordannicmarshall': {
+          approved_ips: {
+              home: '98.223.107.114',
+              bryan_uncle_house: '71.194.71.251'
+          },
+          friendly_name: 'Jordan',
+          currently_watching: false
+      },
+      'mbchyno': {
+          approved_ips: {
+              home: '208.38.246.0'
+          },
+          friendly_name: 'Marie',
+          currently_watching: false
+      },
+      'paulfanfoot': {
+          approved_ips: {
+              home: '75.27.16.133'
+          },
+          friendly_name: 'Mom/Dad',
           currently_watching: false
       },
       'Rileyhopesuthy': {
@@ -27,6 +82,20 @@ class PlexController < ApplicationController
               babysitter_house: '47.227.183.69'
           },
           friendly_name: 'Riley Hope',
+          currently_watching: false
+      },
+      'superman724': {
+          approved_ips: {
+              home: '104.50.254.131',
+          },
+          friendly_name: 'Maggie/Michael',
+          currently_watching: false
+      },
+      'tamie_ellis@nobl.k12.in.us': {
+          approved_ips: {
+              home: '208.38.246.36'
+          },
+          friendly_name: 'Tamie',
           currently_watching: false
       },
       'thejudeallen': {
@@ -41,54 +110,6 @@ class PlexController < ApplicationController
               home: '73.22.188.222'
           },
           friendly_name: 'Jade/Wes',
-          currently_watching: false
-      },
-      'crazynickmarshall': {
-          approved_ips: {},
-          friendly_name: 'Nicholas',
-          currently_watching: false
-      },
-      'jordannicmarshall': {
-          approved_ips: {
-              home: '98.223.107.114',
-              bryan_uncle_house: '71.194.71.251'
-          },
-          friendly_name: 'Jordan',
-          currently_watching: false
-      },
-      'paulfanfoot': {
-          approved_ips: {
-              home: '75.27.16.133'
-          },
-          friendly_name: 'Mom/Dad',
-          currently_watching: false
-      },
-      'superman724': {
-          approved_ips: {
-              home: '104.50.254.131',
-          },
-          friendly_name: 'Maggie/Michael',
-          currently_watching: false
-      },
-      'hillc913': {
-          approved_ips: {
-              home: '73.45.234.137'
-          },
-          friendly_name: 'Hill Clark',
-          currently_watching: false
-      },
-      'mbchyno': {
-          approved_ips: {
-
-          },
-          friendly_name: 'Marie',
-          currently_watching: false
-      },
-      'Ddietz1': {
-          approved_ips: {
-              home: '172.30.0.101'
-          },
-          friendly_name: 'David',
           currently_watching: false
       }
   }

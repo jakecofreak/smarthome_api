@@ -47,7 +47,8 @@ class PlexController < ApplicationController
       },
       'hillc913': {
           approved_ips: {
-              home: '73.45.234.137'
+              home: '73.45.234.137',
+              idiots_place: '50.76.88.4'
           },
           friendly_name: 'Hill Clark',
           currently_watching: false
@@ -69,7 +70,8 @@ class PlexController < ApplicationController
       },
       'motz914': {
           approved_ips: {
-              school: '69.174.173.131'
+              school: '69.174.173.131',
+              home: '68.57.195.104'
           },
           friendly_name: 'Scott Motz',
           currently_watching: false
@@ -81,26 +83,9 @@ class PlexController < ApplicationController
           friendly_name: 'Mom/Dad',
           currently_watching: false
       },
-      'Rileyhopesuthy': {
-          approved_ips: {
-              unsure_1: '71.46.94.22',
-              home: '73.102.207.11',
-              london: '86.150.174.161',
-              babysitter_house: '47.227.183.69'
-          },
-          friendly_name: 'Riley Hope',
-          currently_watching: false
-      },
-      'superman724': {
-          approved_ips: {
-              home: '104.50.254.131',
-          },
-          friendly_name: 'Maggie/Michael',
-          currently_watching: false
-      },
       'tamie_ellis': {
           approved_ips: {
-              home: '208.38.246.89'
+              home: '208.38.246.10'
           },
           friendly_name: 'Tamie',
           currently_watching: false

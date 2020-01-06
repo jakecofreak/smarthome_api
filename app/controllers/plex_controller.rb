@@ -63,7 +63,7 @@ class PlexController < ApplicationController
       },
       'mbchyno': {
           approved_ips: {
-              home: '208.38.246.0'
+              home: '208.38.246.66'
           },
           friendly_name: 'Marie',
           currently_watching: false

@@ -56,6 +56,7 @@ class PlexController < ApplicationController
       'jordannicmarshall': {
           approved_ips: {
               home: '98.223.107.114',
+              reids_house: '162.221.221.186',
               bryan_uncle_house: '71.194.71.251'
           },
           friendly_name: 'Jordan',
@@ -85,7 +86,7 @@ class PlexController < ApplicationController
       },
       'tamie_ellis': {
           approved_ips: {
-              home: '208.38.246.10'
+              home: '208.38.246.50'
           },
           friendly_name: 'Tamie',
           currently_watching: false

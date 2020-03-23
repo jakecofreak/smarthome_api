@@ -94,7 +94,8 @@ class PlexController < ApplicationController
       'thejudeallen': {
           approved_ips: {
               home: '184.175.156.31',
-              memphis: '73.59.145.149'
+              memphis: '73.59.145.149',
+              nashville: '71.203.212.55'
           },
           friendly_name: 'Jude',
           currently_watching: false

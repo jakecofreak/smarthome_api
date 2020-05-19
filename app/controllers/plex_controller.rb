@@ -93,7 +93,7 @@ class PlexController < ApplicationController
       },
       'tamie_ellis': {
           approved_ips: {
-              home: '208.38.246.50'
+              home: '208.38.246.30'
           },
           friendly_name: 'Tamie',
           currently_watching: false
@@ -102,7 +102,8 @@ class PlexController < ApplicationController
           approved_ips: {
               home: '184.175.156.31',
               memphis: '73.59.145.149',
-              nashville: '71.203.212.55'
+              nashville: '71.203.212.55',
+              north_carolina: '75.110.111.135'
           },
           friendly_name: 'Jude',
           currently_watching: false

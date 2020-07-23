@@ -24,8 +24,9 @@ class PlexController < ApplicationController
       },
       'Ddietz1': {
           approved_ips: {
-              home: '67.20.136.88',
-              corys: '173.95.12.131'
+              SC: '67.20.136.88',
+              corys: '173.95.12.131',
+              home: '172.98.129.236'
           },
           friendly_name: 'David',
           currently_watching: false
@@ -94,7 +95,9 @@ class PlexController < ApplicationController
       'tamie_ellis': {
           approved_ips: {
               home: '208.38.246.30',
-              home2: '208.38.246.40'
+              home2: '208.38.246.40',
+              home3: '208.38.246.113',
+              home4: '208.38.246.6'
           },
           friendly_name: 'Tamie',
           currently_watching: false

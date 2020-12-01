@@ -18,7 +18,9 @@ class PlexController < ApplicationController
           currently_watching: false
       },
       'crazynickmarshall': {
-          approved_ips: {},
+          approved_ips: {
+              home: '99.99.24.109'
+          },
           friendly_name: 'Nicholas',
           currently_watching: false
       },
@@ -31,14 +33,6 @@ class PlexController < ApplicationController
           friendly_name: 'David',
           currently_watching: false
       },
-      'dtmob48': {
-          approved_ips: {
-              home: '68.45.34.102',
-              janae_parents: '68.44.183.73'
-          },
-          friendly_name: 'Janae/Dustin',
-          currently_watching: false
-      },
       'gdietz57': {
           approved_ips: {
               home: '67.20.136.88'
@@ -46,19 +40,19 @@ class PlexController < ApplicationController
           friendly_name: 'Gammy',
           currently_watching: false
       },
-      'hillc913': {
-          approved_ips: {
-              home: '73.45.234.137',
-              idiots_place: '50.76.88.4'
-          },
-          friendly_name: 'Hill Clark',
-          currently_watching: false
+      'haiden.montgomery': {
+        approved_ips: {
+            home: '68.38.238.18'
+        },
+        friendly_name: 'Haiden',
+        currently_watching: false
       },
       'jordannicmarshall': {
           approved_ips: {
               home: '98.223.107.114',
-              reids_house: '162.221.221.186',
-              bryan_uncle_house: '71.194.71.251'
+              todd_uncle_house: '71.194.71.251',
+              todds_house: '73.103.8.13',
+              todds_parents_house: '68.44.255.150'
           },
           friendly_name: 'Jordan',
           currently_watching: false
@@ -80,7 +74,8 @@ class PlexController < ApplicationController
       'motz914': {
           approved_ips: {
               school: '69.174.173.131',
-              home: '68.57.195.104'
+              home: '68.57.195.104',
+              home2: '68.57.246.42'
           },
           friendly_name: 'Scott Motz',
           currently_watching: false

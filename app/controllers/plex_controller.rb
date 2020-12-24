@@ -92,7 +92,8 @@ class PlexController < ApplicationController
               home: '208.38.246.30',
               home2: '208.38.246.40',
               home3: '208.38.246.113',
-              home4: '208.38.246.6'
+              home4: '208.38.246.6',
+              home5: '208.38.243.13'
           },
           friendly_name: 'Tamie',
           currently_watching: false

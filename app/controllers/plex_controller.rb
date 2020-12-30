@@ -90,11 +90,12 @@ class PlexController < ApplicationController
       },
       'tamie_ellis': {
           approved_ips: {
-              home: '208.38.246.30',
-              home2: '208.38.246.40',
-              home3: '208.38.246.113',
-              home4: '208.38.246.6',
-              home5: '208.38.246.13'
+              home: '208.38.246.30/24'
+              # home: '208.38.246.30',
+              # home2: '208.38.246.40',
+              # home3: '208.38.246.113',
+              # home4: '208.38.246.6',
+              # home5: '208.38.246.13'
           },
           friendly_name: 'Tamie',
           currently_watching: false
@@ -151,7 +152,8 @@ class PlexController < ApplicationController
     # matches a user's IP to a location
     location = ''
     @@data[user_id][:approved_ips].each do |key, value|
-      if notification[:ipAddress] == value
+      if IPAddr.new(value) === IPAddr.new(notification[:ipAddress])
+      # if notification[:ipAddress] == value
         location = key.to_s
       end
     end

@@ -28,7 +28,7 @@ class PlexController < ApplicationController
           approved_ips: {
               SC: '67.20.136.88',
               corys: '173.95.12.131',
-              home: '172.98.129.236'
+              home: '173.92.1.61' # IP added by hand because push to github failed even though heroku succeeded
           },
           friendly_name: 'David',
           currently_watching: false
